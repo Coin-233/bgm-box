@@ -1,0 +1,31 @@
+name: Update Bangumi Info
+
+on:
+  schedule:
+    - cron: '0 0 * * *' 
+  workflow_dispatch:
+
+jobs:
+  update-gist:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Run script
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GIST_ID: 924ff73e56e26f520084c4f7a4992559
+        BGMTV_USER: afterdreams
+      run: python run.py
