@@ -4,10 +4,12 @@ import os
 
 GIST_ID = os.getenv('GIST_ID')
 GH_TOKEN = os.getenv('GH_TOKEN')
-BGMTV_USER = os.getenv('BGMTV_USER')
+BGM_USER = os.getenv('BGM_USER')
+COOKIE = os.getenv('COOKIE')
 
 HEADERS = {
-    'User-Agent': 'Coin-233/bgm-box (https://github.com/Coin-233/bgm-box)'
+    'User-Agent': 'Coin-233/bgm-box (https://github.com/Coin-233/bgm-box)',
+    'Cookie': f"chii_auth={COOKIE}"
 }
 
 def fetch_bgm_info(username):
@@ -38,12 +40,11 @@ def update_gist(info, nickname):
         'Accept': 'application/vnd.github.v3+json'
     }
     content = f"""
-{info['fav']} 收藏
-{info['pc']} 完成
-{info['pcr']} 完成率
-{info['gp']} 平均分
-{info['sd']} 标准差
-{info['rat']} 评分数
+{info['fav']} 收藏           {info['pc']} 完成
+{info['pcr']} 完成率       {info['gp']} 平均分
+{info['sd']} 标准差        {info['rat']} 评分数
+
+https://bgm.tv/user/{BGM_USER}
 """
     data = {
         "files": {
@@ -55,5 +56,5 @@ def update_gist(info, nickname):
     response = requests.patch(gist_url, json=data, headers=headers)
 
 if __name__ == '__main__':
-    user_info, nickname = fetch_bgm_info(BGMTV_USER)
+    user_info, nickname = fetch_bgm_info(BGM_USER)
     update_gist(user_info, nickname)

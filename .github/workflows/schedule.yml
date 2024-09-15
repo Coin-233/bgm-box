@@ -27,5 +27,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         GIST_ID: 924ff73e56e26f520084c4f7a4992559
-        BGMTV_USER: afterdreams
+        BGM_USER: afterdreams
+        COOKIE: ${{ secrets.COOKIE }}
       run: python run.py
