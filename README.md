@@ -1,0 +1,1 @@
+## Share your [bangumi](https://bgm.tv/) stats to everyone on Github by using this gadget!
