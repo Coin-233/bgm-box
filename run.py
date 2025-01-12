@@ -40,9 +40,9 @@ def update_gist(info, nickname):
         'Accept': 'application/vnd.github.v3+json'
     }
     content = f"""
-{info['fav']} 收藏           {info['pc']} 完成
+{info['fav']}   收藏         {info['pc']}  完成
 {info['pcr']} 完成率       {info['gp']} 平均分
-{info['sd']} 标准差        {info['rat']} 评分数
+{info['sd']}  标准差       {info['rat']}  评分数
 
 https://bgm.tv/user/{BGM_USER}
 """
